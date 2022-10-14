@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '/core/constant/design/border_constant.dart';
-import '../button/elevated_circular_icon_buttonnt.dart';
+import '../button/elevated_circular_icon_button.dart';
 
 class AlertDialogSuccess extends StatelessWidget {
   final String text;

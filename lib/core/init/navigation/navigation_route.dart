@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_core_library/core/component/view/no_navigation_view.dart';
 import 'package:flutter_my_core_library/core/constant/navigation/navigation_constants.dart';
-';
+
 import '../../../view/test_view.dart';
 
 class NavigationRoute {

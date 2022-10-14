@@ -8,7 +8,7 @@ import '/core/extension/context_extension.dart';
 import '../../../constant/design/border_constant.dart';
 import '../../../constant/enum/network_result_enum.dart';
 import '../../../constant/text/error_text_message.dart';
-import '../../../init/network/connection_activity/network_change_managerxt_message.dart';
+import '../../../init/network/connection_activity/network_change_manager.dart';
 
 class NoNetworkAlertDialog extends StatefulWidget {
   late bool? isCoverScreen = true;

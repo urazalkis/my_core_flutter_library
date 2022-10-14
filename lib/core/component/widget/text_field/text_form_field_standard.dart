@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-;
+
 import '/core/constant/design/border_constant.dart';
 import '/core/constant/design/color_constant.dart';
 
