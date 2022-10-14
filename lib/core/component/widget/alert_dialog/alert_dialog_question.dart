@@ -7,7 +7,7 @@ class AlertDialogQuestion extends StatelessWidget {
   final Color textColor;
   final VoidCallback onpressedConfirm;
 
-  AlertDialogQuestion(
+  const AlertDialogQuestion(
       {Key? key,
       required this.text,
       required this.textColor,

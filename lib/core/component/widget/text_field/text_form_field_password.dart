@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '/core/constant/design/border_constant.dart';
@@ -8,7 +7,7 @@ class TextFormFieldPassword extends StatefulWidget {
   final TextEditingController? tfController;
   final String? hintText;
 
-  TextFormFieldPassword({
+  const TextFormFieldPassword({
     Key? key,
     this.tfController,
     this.hintText,

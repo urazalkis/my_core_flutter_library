@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -43,7 +44,9 @@ class TimePickerCustom extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               )),
           onConfirm: (time) {
-            print('confirm max ${time}');
+            if (kDebugMode) {
+              print('confirm max $time');
+            }
             onConfirm!(time.toString());
             selectedDate = time.toString();
           },
@@ -57,15 +60,16 @@ class TimePickerCustom extends StatelessWidget {
         child: DropdownButtonFormField<String>(
           alignment: Alignment.center,
           hint: Text(
-            '${DateFormatter.instance.time.format(DateTime.parse(selectedDate ?? DateTime.now().toString()))}',
-            style: TextStyle(fontFamily: 'Bozon', color: Colors.black),
+            DateFormatter.instance.time.format(
+                DateTime.parse(selectedDate ?? DateTime.now().toString())),
+            style: const TextStyle(fontFamily: 'Bozon', color: Colors.black),
           ),
           decoration: InputDecoration(
-            border: UnderlineInputBorder(),
-            enabledBorder: UnderlineInputBorder(
+            border: const UnderlineInputBorder(),
+            enabledBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.black),
             ),
-            focusedBorder: UnderlineInputBorder(
+            focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.black),
             ),
             label: Text(
@@ -76,10 +80,10 @@ class TimePickerCustom extends StatelessWidget {
                   fontWeight: FontWeight.w500),
             ),
           ),
-          items: [],
           icon: Icon(Icons.arrow_drop_down,
               color: ColorConstants.instance.customBlueColor),
           onChanged: (String? value) {},
+          items: [],
         ),
       ),
     );

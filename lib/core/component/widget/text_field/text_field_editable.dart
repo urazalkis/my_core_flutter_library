@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+import 'package:flutter_my_core_library/core/component/widget/text_field/text_form_field_standard.dart';
+;
 import '/core/extension/context_extension.dart';
-import '/core/widget/text_field/text_form_field_standard.dart';
-import '../../constant/design/color_constant.dart';
-import '../../constant/text/error_text_message.dart';
+import '../../../constant/design/color_constant.dart';
+import '../../../constant/text/error_text_message.dart';
+
 
 class TextFieldEditable extends StatefulWidget {
   final TextEditingController? tfController;
@@ -61,7 +61,7 @@ class _TextFieldEditableState extends State<TextFieldEditable> {
                 GestureDetector(
                   onTap: () {
                     if (widget.isSaving) {
-                      return null;
+                      return;
                     } else {
                       widget.onSaved!();
 
@@ -88,7 +88,7 @@ class _TextFieldEditableState extends State<TextFieldEditable> {
                 ),
                 Text(
                   saveText,
-                  style: TextStyle(fontSize: 10),
+                  style: const TextStyle(fontSize: 10),
                 ),
               ],
             ),
@@ -111,6 +111,7 @@ class _TextFieldEditableState extends State<TextFieldEditable> {
             if (tfInput!.isEmpty) {
               return ErrorText.instance.emptyFieldErrorText;
             }
+            return null;
           },
         ),
         GestureDetector(

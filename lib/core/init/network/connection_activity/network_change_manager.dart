@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../constant/enum/network_result_enum.dart';
 
@@ -29,7 +30,9 @@ class NetworkChangeManager extends INetworkChangeManager {
   @override
   void handleNetworkChange(NetworkCallBack onChange) {
     _subscription = _connectivity.onConnectivityChanged.listen((event) {
-      print(event);
+      if (kDebugMode) {
+        print(event);
+      }
       onChange.call(NetworkResult.checkConnectivityResult(event));
     });
   }

@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-
+';
 import '/core/constant/design/color_constant.dart';
 import '/core/constant/text_format/date_format.dart';
 
@@ -42,7 +43,9 @@ class DatePickerCustom extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               )),
           onConfirm: (date) {
-            print('confirm max ${date}');
+            if (kDebugMode) {
+              print('confirm max $date');
+            }
             onConfirm!(date.toString());
             selectedDate = date.toString();
           },
@@ -76,10 +79,10 @@ class DatePickerCustom extends StatelessWidget {
                   fontWeight: FontWeight.w500),
             ),
           ),
-          items: [],
           icon: Icon(Icons.arrow_drop_down,
               color: ColorConstants.instance.customBlueColor),
           onChanged: (String? value) {},
+          items: [],
         ),
       ),
     );

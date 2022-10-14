@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '/core/widget/text_field/text_form_field_standard.dart';
+import 'package:flutter_my_core_library/core/component/widget/text_field/text_form_field_standard.dart';
 
 class TextFormFieldExplanation extends StatelessWidget {
   final TextEditingController? tfController;
@@ -25,7 +24,9 @@ class TextFormFieldExplanation extends StatelessWidget {
       hintText: hintText,
       labelText: labelText,
       upLabel: upLabel,
-      validator: (String? value) {},
+      validator: (String? value) {
+        return null;
+      },
     );
   }
 }

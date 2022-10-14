@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+;
 import '/core/constant/design/border_constant.dart';
 import '/core/constant/design/color_constant.dart';
 
@@ -22,11 +22,11 @@ class TextFormFieldStandard extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String? initialValue;
-  bool? obscureText;
+  final bool? obscureText;
   final bool? borderEnable;
   final Color? textColor;
 
-  TextFormFieldStandard(
+  const TextFormFieldStandard(
       {Key? key,
       this.height,
       this.width,
@@ -54,7 +54,7 @@ class TextFormFieldStandard extends StatelessWidget {
       height: height,
       width: width,
       child: TextFormField(
-        initialValue: initialValue ?? null,
+        initialValue: initialValue,
         maxLines: maxLines,
         controller: tfController,
         autocorrect: false,
@@ -77,12 +77,12 @@ class TextFormFieldStandard extends StatelessWidget {
                 color: ColorConstants.instance.customBlueColor,
                 fontWeight: FontWeight.w500),
           ),
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             fontFamily: 'bozon',
           ),
           filled: filled ?? true,
           fillColor: filledColor ?? Colors.white,
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             fontFamily: 'bozon',
           ),
           border: borderEnable == false
@@ -93,10 +93,12 @@ class TextFormFieldStandard extends StatelessWidget {
               ? null
               : OutlineInputBorder(
                   borderRadius: BorderConstant.instance.radiusAllCircularMin,
-                  borderSide: BorderSide(width: 0.5)),
+                  borderSide: const BorderSide(width: 0.5)),
         ),
         validator: (tfInput) {
-          print("standard $tfInput");
+          if (kDebugMode) {
+            print("standard $tfInput");
+          }
           return validator!(tfInput);
         },
       ),

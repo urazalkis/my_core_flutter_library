@@ -5,7 +5,7 @@ import '/core/constant/design/color_constant.dart';
 class TextFieldStandard extends StatelessWidget {
   final String? hintText;
   final ValueChanged<String>? onChanged;
-  TextFieldStandard({Key? key, this.hintText, this.onChanged})
+  const TextFieldStandard({Key? key, this.hintText, this.onChanged})
       : super(key: key);
 
   @override

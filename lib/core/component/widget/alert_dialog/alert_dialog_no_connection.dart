@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '/core/extension/context_extension.dart';
-import '../../constant/design/border_constant.dart';
-import '../../constant/enum/network_result_enum.dart';
-import '../../constant/text/error_text_message.dart';
-import '../../init/network/connection_activity/network_change_manager.dart';
+import '../../../constant/design/border_constant.dart';
+import '../../../constant/enum/network_result_enum.dart';
+import '../../../constant/text/error_text_message.dart';
+import '../../../init/network/connection_activity/network_change_managerxt_message.dart';
 
 class NoNetworkAlertDialog extends StatefulWidget {
-  late bool? isCoverScreen = false;
+  late bool? isCoverScreen = true;
   NoNetworkAlertDialog({super.key, this.isCoverScreen});
 
   @override
@@ -28,14 +28,16 @@ class _NoNetworkAlertDialogState extends State<NoNetworkAlertDialog>
   void initState() {
     super.initState();
     _networkChange = NetworkChangeManager();
+    _startContainerAnimation();
     fetchFirstResult();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _networkChange.handleNetworkChange((result) {
-        print(result);
+        if (kDebugMode) {
+          print(result);
+        }
         _updateView(result);
       });
     });
-    _startContainerAnimation();
   }
 
   @override
@@ -45,7 +47,7 @@ class _NoNetworkAlertDialogState extends State<NoNetworkAlertDialog>
   }
 
   void _startContainerAnimation() {
-    timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
+    timer = Timer.periodic(const Duration(milliseconds: 500), (Timer t) {
       setState(() {
         containerPadding =
             const EdgeInsets.only(bottom: 10, left: 20, right: 20);
@@ -70,8 +72,49 @@ class _NoNetworkAlertDialogState extends State<NoNetworkAlertDialog>
   @override
   Widget build(BuildContext context) {
     return _networkResult == NetworkResult.off
-        ? widget.isCoverScreen == true
-            ? Stack(
+        ? widget.isCoverScreen == false
+            ? AnimatedPadding(
+                padding: containerPadding,
+                duration: context.lowDuration,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FittedBox(
+                    child: AnimatedContainer(
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderConstant.instance.radiusAllCircularMin,
+                        color: Colors.black54,
+                      ),
+                      width: context.screenWidth,
+                      duration: context.lowDuration,
+                      child: Padding(
+                        padding: context.paddingLowTopBottom,
+                        child: Column(children: [
+                          const Icon(
+                            Icons.signal_wifi_off,
+                            color: Colors.white,
+                            size: 25,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              ErrorText
+                                  .instance.noConnectionErrorExplanationText,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Colors.white,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : Stack(
                 children: [
                   BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
@@ -108,34 +151,6 @@ class _NoNetworkAlertDialogState extends State<NoNetworkAlertDialog>
                   ),
                   const ModalBarrier(),
                 ],
-              )
-            : AnimatedPadding(
-                padding: containerPadding,
-                duration: context.lowDuration,
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: AnimatedContainer(
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius:
-                          BorderConstant.instance.radiusAllCircularMin,
-                      color: Colors.black54,
-                    ),
-                    width: context.screenWidth,
-                    duration: context.lowDuration,
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'İnternet Bağlantısı Yok.Bağlantınızı Kontrol Edin',
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: Colors.white,
-                          fontSize: 11,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
               )
         : const Center();
   }

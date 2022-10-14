@@ -50,7 +50,10 @@ dev_dependencies:
 
 
 flutter:
+  assets:
+    - asset/image/nopage.png
   uses-material-design: true
+
 
 
 

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '/core/constant/design/border_constant.dart';
+import '../button/elevated_circular_icon_buttonnt.dart';
 
-class AlertDialogError extends StatelessWidget {
+class AlertDialogSuccess extends StatelessWidget {
   final String text;
   final Color? textColor;
   final String? fontFamily;
   final String? buttonText;
   final bool? locale = false;
 
-  const AlertDialogError(
+  const AlertDialogSuccess(
       {Key? key,
       required this.text,
       this.buttonText,
@@ -20,35 +21,43 @@ class AlertDialogError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.red,
       content: Text(
         text,
         style:
-            TextStyle(color: textColor ?? Colors.white, fontFamily: fontFamily),
-        textAlign: TextAlign.center,
+            TextStyle(color: textColor ?? Colors.black, fontFamily: fontFamily),
       ),
       title: const Icon(
-        Icons.error,
-        color: Colors.white,
+        Icons.check_circle,
+        color: Colors.green,
         size: 50,
       ),
       shape: RoundedRectangleBorder(
           borderRadius: BorderConstant.instance.radiusAllCircularMedium),
       actions: [
-        /*Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: ElevatedCircularIconButton(
-                label: Align(alignment: Alignment.center, child: Text(buttonText ?? '',style: TextStyle(fontFamily:fontFamily,fontSize: 20,color: Colors.black),textAlign: TextAlign.center,)),
-                color: Colors.white,
-                onPressed: (){ },
-                icon: Icon(Icons.error,color: Colors.red,),
+                label: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      buttonText ?? '',
+                      style: TextStyle(fontFamily: fontFamily, fontSize: 20),
+                      textAlign: TextAlign.center,
+                    )),
+                color: Colors.green,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.check,
+                  color: Colors.green,
+                ),
               ),
             ),
           ],
-        )*/
+        )
       ],
     );
   }

@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '/core/constant/design/border_constant.dart';
 
 //typedef FutureCallBack = Future<void> Function();
 class ElevatedCircularIconButton extends StatefulWidget {
-  ElevatedCircularIconButton(
+  const ElevatedCircularIconButton(
       {Key? key,
       required this.label,
       required this.onPressed,

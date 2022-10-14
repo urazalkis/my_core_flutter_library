@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 
 class ConnectionActivity {
   ConnectionActivity._();
@@ -25,9 +26,13 @@ class ConnectionActivity {
     try {
       final result = await InternetAddress.lookup('example.com');
       isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-      print("connected");
+      if (kDebugMode) {
+        print("connected");
+      }
     } on SocketException catch (_) {
-      print("not connected");
+      if (kDebugMode) {
+        print("not connected");
+      }
       isOnline = false;
     }
     _controller.sink.add({result: isOnline});

@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
 
+import 'core/component/widget/alert_dialog/alert_dialog_no_connection.dart';
 import 'core/constant/enum/network_result_enum.dart';
 import 'core/constant/navigation/navigation_constants.dart';
 import 'core/init/main_build/main_build.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/network/connection_activity/network_change_manager.dart';
-import 'core/widget/alert_dialog/alert_dialog_no_connection.dart';
 
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();

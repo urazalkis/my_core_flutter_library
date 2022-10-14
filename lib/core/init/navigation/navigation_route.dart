@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_my_core_library/view/test_view.dart';
-
-import '/core/widget/card/not_found_navigation_card.dart';
-import '../../constant/navigation/navigation_constants.dart';
+import 'package:flutter_my_core_library/core/component/view/no_navigation_view.dart';
+import 'package:flutter_my_core_library/core/constant/navigation/navigation_constants.dart';
+';
+import '../../../view/test_view.dart';
 
 class NavigationRoute {
   static final NavigationRoute _instance = NavigationRoute._init();
@@ -18,12 +17,14 @@ class NavigationRoute {
         return normalNavigate(const TestView(), NavigationConstants.TEST);
       default:
         return MaterialPageRoute(
-          builder: (context) => const NotFoundNavigationCard(),
+          builder: (context) => const NotFoundNavigationView(),
         );
     }
   }
 
-  String? initialRoute() {}
+  String? initialRoute() {
+    return NavigationConstants.TEST;
+  }
 
   MaterialPageRoute normalNavigate(Widget widget, String pageName) {
     return MaterialPageRoute(

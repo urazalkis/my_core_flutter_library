@@ -24,10 +24,19 @@ extension ThemeExtension on BuildContext {
 }
 
 extension PaddingExtensionAll on BuildContext {
-  EdgeInsets get paddingLow => EdgeInsets.all(lowValue);
-  EdgeInsets get paddingNormal => EdgeInsets.all(normalValue);
-  EdgeInsets get paddingMedium => EdgeInsets.all(mediumValue);
-  EdgeInsets get paddingHigh => EdgeInsets.all(highValue);
+  EdgeInsets get paddingLowAll => EdgeInsets.all(lowValue);
+  EdgeInsets get paddingNormalAll => EdgeInsets.all(normalValue);
+  EdgeInsets get paddingMediumAll => EdgeInsets.all(mediumValue);
+  EdgeInsets get paddingHighAll => EdgeInsets.all(highValue);
+
+  EdgeInsets get paddingLowTopBottom =>
+      EdgeInsets.only(top: lowValue, bottom: lowValue);
+  EdgeInsets get paddingNormalTopBottom =>
+      EdgeInsets.only(top: lowValue, bottom: lowValue);
+  EdgeInsets get paddingMediumTopBottom =>
+      EdgeInsets.only(top: lowValue, bottom: lowValue);
+  EdgeInsets get paddingHighTopBottom =>
+      EdgeInsets.only(top: lowValue, bottom: lowValue);
 }
 
 extension PaddingExtensionSymetric on BuildContext {
