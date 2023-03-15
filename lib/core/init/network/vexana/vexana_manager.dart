@@ -13,7 +13,7 @@ class VexanaManager {
 
   static const String _baseUrl = 'https://google.com';
 
-  INetworkManager networkManager = NetworkManager(
+  INetworkManager networkManager = NetworkManager<Null>(
     isEnableLogger: true,
     options: BaseOptions(baseUrl: _baseUrl),
   );

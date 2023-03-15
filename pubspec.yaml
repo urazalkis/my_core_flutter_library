@@ -15,21 +15,42 @@ dependencies:
 
 
 
+  #google
   cupertino_icons: ^1.0.2
-  intl:
-  shared_preferences:
-  connectivity_plus:
-  http:
-  flutter_bloc:
   change_app_package_name:
-  fluttertoast:
-  flutter_datetime_picker:
-  dropdown_search: ^3.0.1
-  flutter_spinkit: ^5.1.0
-  font_awesome_flutter: ^10.2.1
-  dio: ^4.0.6
-  vexana:
-  hive_flutter: ^1.1.0
+  speech_to_text: ^6.1.1
+  fluttertoast: ^8.1.2
+  dropdown_search: ^5.0.6
+  flutter_launcher_icons:
+  intl:
+  email_validator:
+  intl_phone_number_input:
+  font_awesome_flutter:
+  json_serializable: ^6.5.4
+  json_annotation: ^4.7.0
+  upgrader: ^6.0.1
+  package_info_plus:
+
+
+  #firebase
+  firebase_core: ^2.7.0
+  cloud_firestore: ^4.4.3
+  firebase_auth: ^4.2.2
+  google_sign_in: ^6.0.1
+
+
+  #State management
+  flutter_bloc:
+
+  #Network
+  connectivity_plus:
+  vexana: ^3.4.1
+
+  #cache
+  hive_flutter:
+
+  #animation
+  avatar_glow:
 
 
 
