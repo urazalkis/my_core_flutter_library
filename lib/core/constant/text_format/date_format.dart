@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DateFormatter{
-  static DateFormatter instance = DateFormatter._init();
-  DateFormatter._init();
+@immutable
+class DateFormatter {
+  const DateFormatter._init();
 
-  final date = DateFormat('yyyy-MM-dd');
-  final time = DateFormat('HH:mm');
-  final time12 = DateFormat('hh:mm');
+  static final date = DateFormat('yyyy-MM-dd');
+  static final time = DateFormat('HH:mm');
+  static final time12 = DateFormat('hh:mm');
 }

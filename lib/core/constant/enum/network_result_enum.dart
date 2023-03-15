@@ -13,6 +13,8 @@ enum NetworkResult {
         return NetworkResult.on;
       case ConnectivityResult.none:
         return NetworkResult.off;
+      default:
+        return NetworkResult.on;
     }
   }
 }

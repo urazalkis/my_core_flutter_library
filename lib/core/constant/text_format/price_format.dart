@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class PriceFormat{
-  static PriceFormat instance = PriceFormat._init();
-  PriceFormat._init();
+@immutable
+class PriceFormat {
+  const PriceFormat._init();
 
-  final formatter = NumberFormat('#,##0.00', 'ID');
+  static final numberFormat = NumberFormat('#,##0.00', 'ID');
 }

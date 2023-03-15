@@ -1,66 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ColorConstants {
-  static ColorConstants instance = ColorConstants._init();
-  ColorConstants._init();
+@immutable
+class ColorConstant {
+  const ColorConstant._();
+  static const Color brightNavyBlue = Color(0xFF1E76D6);
+  static const Color russianViolet = Color(0xFF1F1346);
 
-  final appBackgroundColor = const BoxDecoration(
-      gradient: LinearGradient(
-    begin: Alignment.topRight,
-    end: Alignment.bottomLeft,
-    colors: [
-      Color(0xFF034A72),
-      Color(0xFF3182B6),
-      Color(0xFFFFFFFF),
-    ],
-  ));
-  final appBackgroundBlueColor = const BoxDecoration(
-      gradient: LinearGradient(
-    begin: Alignment.topRight,
-    end: Alignment.bottomLeft,
-    colors: [
-      Color(0xFF3182B6),
-      Color(0xFF034A72),
-    ],
-  ));
+  static const Color googleColor = Color(0xffDD4839);
+  static const Color facebookColor = Color(0xff385998);
 
-  final registerBackgroundColor = const BoxDecoration(
-      gradient: LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      Color(0xFFF2F2F2),
-      Color(0xFFBDCCD4),
-    ],
-  ));
-  final buttonGradientBlueColor = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      const Color(0xFF030303).withOpacity(0.3),
-      const Color(0xFFefefbb).withOpacity(0.3),
-    ],
-  );
-  final transparentColor = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      const Color(0xFF636363).withOpacity(0.1),
-      const Color(0xFFefefbb).withOpacity(0.1),
-    ],
-  );
-  final gradientGreenColor = const LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      Colors.greenAccent,
-      Colors.green,
-    ],
-  );
-  Color loginButtonColor = const Color(0xffff9b511);
-  Color customBlueColor = const Color(0xFF034A72);
-  Color customGreyColor = const Color(0xFFCCCCCC);
-  Color customGrey2Color = const Color(0xFFBDCCD4);
-  Color customSkinColor = const Color(0xFFE3C4A9);
-  Color customBlue2Color = const Color(0xFF034A72).withOpacity(0.5);
+  static const Color citra = Color(0xfff7bc04);
+  static const Color southernBlue = Color(0xff395988);
+  static const Color cottonBoll = Color(0xffE9EFFF);
 }
