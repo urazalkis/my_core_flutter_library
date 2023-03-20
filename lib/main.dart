@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'core/constant/enum/network_result_enum.dart';
 import 'core/constant/navigation/navigation_constant.dart';
+import 'core/init/bloc/bloc_theme.dart';
 import 'core/init/main_build/main_build.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
@@ -41,13 +43,18 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: MainBuild.build,
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: NavigationRoute.instance.generateRoute,
-      navigatorKey: NavigationService.instance.navigatorKey,
-      // initialRoute: NavigationRoute.instance.initialRoute(),
-      initialRoute: NavigationConstant.TEST,
+    return BlocBuilder<ThemeCubit, ThemeData>(
+      builder: (context, state) {
+        return MaterialApp(
+          builder: MainBuild.build,
+          debugShowCheckedModeBanner: false,
+          theme: state,
+          onGenerateRoute: NavigationRoute.instance.generateRoute,
+          navigatorKey: NavigationService.instance.navigatorKey,
+          // initialRoute: NavigationRoute.instance.initialRoute(),
+          initialRoute: NavigationConstant.TEST,
+        );
+      },
     );
   }
 }

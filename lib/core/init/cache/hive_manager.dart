@@ -13,42 +13,49 @@ abstract class IHiveManager<T> {
     }
   }
 
-  Future<void> clearAll();
+  Future<void> close();
+  Future<void> clear();
 
-  Future<void> addItem(T item);
-  Future<void> addItems(List<T> items);
-  Future<void> putItems(List<T> items);
-  T? getItem(HiveKeyEnum key);
+  Future<void> add(T item);
+  Future<void> addAll(List<T> items);
+  Future<void> putAll(List<T> items);
+  T? get(HiveKeyEnum key);
   List<T>? getValues();
-  Future<void> putItem(HiveKeyEnum key, T value);
-  Future<void> removeItem(HiveKeyEnum key);
+  Future<void> put(HiveKeyEnum key, T value);
+  Future<void> delete(HiveKeyEnum key);
   T? getFirst();
   T? getLast();
   void registerAdapters();
 }
 
 class HiveManager<T> extends IHiveManager<T> {
-  static HiveManager? _instance;
+  HiveManager(super.hiveBoxName);
+  /*static HiveManager? _instance;
 
   HiveManager._init(super.hiveBoxName);
 
   factory HiveManager(HiveBoxEnum hiveBoxName) {
     _instance ??= HiveManager<T>._init(hiveBoxName);
     return _instance! as HiveManager<T>;
+  }*/
+
+  @override
+  Future<void> close() async {
+    await _box?.close();
   }
 
   @override
-  Future<void> clearAll() async {
+  Future<void> clear() async {
     await _box?.clear();
   }
 
   @override
-  Future<void> addItems(List<T> items) async {
+  Future<void> addAll(List<T> items) async {
     await _box?.addAll(items);
   }
 
   @override
-  T? getItem(HiveKeyEnum key) {
+  T? get(HiveKeyEnum key) {
     return _box?.get(key.name);
   }
 
@@ -58,37 +65,39 @@ class HiveManager<T> extends IHiveManager<T> {
   }
 
   @override
-  Future<void> addItem(T value) async {
+  Future<void> add(T value) async {
     await _box?.add(value);
   }
 
   @override
-  Future<void> putItem(HiveKeyEnum key, T value) async {
+  Future<void> put(HiveKeyEnum key, T value) async {
     await _box?.put(key.name, value);
   }
 
   @override
-  Future<void> putItems(List<T> items) async {
+  Future<void> putAll(List<T> items) async {
     await _box?.putAll(Map.fromEntries(items.map((e) => MapEntry(e, e))));
   }
 
   @override
-  Future<void> removeItem(HiveKeyEnum key) async {
+  Future<void> delete(HiveKeyEnum key) async {
     await _box?.delete(key.name);
   }
 
   @override
   T? getFirst() {
-    return _box?.values.first;
+    return _box?.values?.first;
   }
 
   @override
   T? getLast() {
-    return _box?.values.last;
+    return _box?.values?.last;
   }
 
   @override
   void registerAdapters() {
-    if (!Hive.isAdapterRegistered(1)) {}
+    /*if (!Hive.isAdapterRegistered(1)) {
+      Hive.registerAdapter(UserAdapter());
+    }*/
   }
 }
